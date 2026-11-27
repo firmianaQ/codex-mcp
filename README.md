@@ -7,26 +7,34 @@
 - Node.js 18+ (tested on Node v22.19.0)
 - `codex` CLI installed and authenticated (`codex login` / `~/.codex`)
 
-## Build
+## Install
+
+### Option A: Install globally from GitHub (recommended)
+
+```bash
+npm install -g github:firmianaQ/codex-mcp
+```
+
+Then configure `~/.gemini/config/mcp_config.json`:
+
+```json
+{
+  "mcpServers": {
+    "codex-mcp": {
+      "command": "codex-mcp"
+    }
+  }
+}
+```
+
+### Option B: Build from local clone
 
 ```bash
 npm install
 npm run build
 ```
 
-## Tools
-
-| Tool | Description |
-| :--- | :--- |
-| `codex_models` | List available Codex models and their supported `effort` / `serviceTier` values. |
-| `codex_run` | Start or continue a Codex thread (`threadId`), dynamically setting `model`, `effort`, `serviceTier`, `sandbox`, `approvalPolicy`, `cwd`, and `waitSeconds`. |
-| `codex_review` | Run a `read-only` code review (`uncommittedChanges`, `baseBranch`, `commit`, or `custom`). |
-| `codex_wait` | Wait/poll for an active thread (`threadId`) to progress, finish, or emit pending approval requests. |
-| `codex_control` | `steer` an active turn, `interrupt` it, or `respond` to a pending server request (`requestId`). |
-
-## MCP Configuration
-
-Example `~/.gemini/config/mcp_config.json` (Antigravity) or any MCP stdio client:
+Then point `~/.gemini/config/mcp_config.json` at `dist/index.js`:
 
 ```json
 {
@@ -38,6 +46,16 @@ Example `~/.gemini/config/mcp_config.json` (Antigravity) or any MCP stdio client
   }
 }
 ```
+
+## Tools
+
+| Tool | Description |
+| :--- | :--- |
+| `codex_models` | List available Codex models and their supported `effort` / `serviceTier` values. |
+| `codex_run` | Start or continue a Codex thread (`threadId`), dynamically setting `model`, `effort`, `serviceTier`, `sandbox`, `approvalPolicy`, `cwd`, and `waitSeconds`. |
+| `codex_review` | Run a `read-only` code review (`uncommittedChanges`, `baseBranch`, `commit`, or `custom`). |
+| `codex_wait` | Wait/poll for an active thread (`threadId`) to progress, finish, or emit pending approval requests. |
+| `codex_control` | `steer` an active turn, `interrupt` it, or `respond` to a pending server request (`requestId`). |
 
 ## Optional Antigravity Skill
 
